@@ -1,0 +1,56 @@
+set t_Co=256					" 256 color support
+set mouse=						" disable mouse
+set nocompatible                " Use Vim defaults instead of 100% vi compatibility
+set backspace=indent,eol,start  " more powerful backspacing
+set history=50                  " keep 50 lines of command line history
+set ruler                       " show the cursor position all the time
+
+" 各种显示中文
+set fileencodings=utf-8,gb2312,cs-bom,gb18030,gbk,cp936
+set termencoding=utf-8
+set encoding=utf-8
+set fenc=utf-8
+set fileformat=unix				" 自动转码
+
+if has("autocmd")
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+syntax on                       " 语法高亮
+set autoindent					" 自动缩进
+filetype plugin indent on		" 自动检测文件类型
+
+set foldmethod=syntax           " 语法折叠
+au FileType python setl foldmethod=indent
+set foldnestmax=3				" fold level 2 max
+set fcs=fold:\					" 哪些类型需要折叠
+
+set tabstop=4					" 制表符相关
+set softtabstop=4
+set shiftwidth=4
+set expandtab					" 用空格代替制表符
+
+set nowrap						" 不自动折行
+set splitright
+set splitbelow
+
+set hlsearch					" 设置搜索高亮
+
+set laststatus=2				" more effective state bar
+set statusline+=%t				" tail of the filename
+set statusline+=\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}] "encoding and format
+set statusline+=\ b:%n
+set statusline+=\ %h			" help file flag
+set statusline+=%m				" modified flag
+set statusline+=%r      		" read only flag
+set statusline+=%=      		" left/right separator
+set statusline+=%c,     		" cursor column
+set statusline+=%l/%L   		" cursor line/total lines
+set statusline+=\ %P    		" percent through file
+
+
+set completeopt-=preview		" 代码补全时不显示scratch窗口
+set cot=menu
+
+colorscheme default             " 配色方案
+set background=light            " for fucking xshell

@@ -1,0 +1,17 @@
+[Unit]
+Description=Static Network (%i)
+Wants=network.target
+Before=network.target
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/usr/bin/ip link set dev %i up
+ExecStart=/usr/bin/ip addr add 192.168.56.200/24 broadcast 192.168.56.255 dev %i
+# ExecStart=/usr/bin/ip route add default via 192.168.56.1
+
+[Install]
+WantedBy=multi-user.target

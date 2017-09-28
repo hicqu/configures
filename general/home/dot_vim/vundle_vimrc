@@ -1,0 +1,32 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tclh123/vim-thrift'
+Plugin 'dylon/vim-antlr'
+Plugin 'sukima/xmledit'
+Plugin 'rust-lang/rust.vim'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
+Plugin 'vim-scripts/django.vim'
+Plugin 'cespare/vim-toml'
+Plugin 'Rip-Rip/clang_complete'
+Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'racer-rust/vim-racer'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'robbles/logstash.vim'
+Plugin 'cstrahan/vim-capnp'
+Plugin 'fatih/vim-go'
+Plugin 'Blackrush/vim-gocode', {'rtp': 'vim/'}
+Plugin 'dhruvasagar/vim-table-mode'
+call vundle#end()            " required
+
+filetype plugin indent on    " required

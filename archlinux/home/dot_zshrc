@@ -1,0 +1,38 @@
+BASE=$HOME/.local
+localbin=$BASE/bin
+
+mavenbin=/opt/java-utils/maven-3.3.9/bin
+antbin=/opt/java-utils/ant-1.9.7/bin
+gradlebin=/opt/java-utils/gradle-3.2.1/bin
+
+# for cargo
+export CARGO_HOME=$HOME/.cargo
+cargobin=$CARGO_HOME/bin
+
+# for go
+export GOPATH=$HOME/.go
+gobin=$GOPATH/bin
+
+export PINGCAP_PATH=$GOPATH/src/github.com/pingcap
+pingcap_bin=($PINGCAP_PATH/tidb/bin $PINGCAP_PATH/pd/bin $PINGCAP_PATH/tidb-tools/bin)
+
+bins=($localbin $mavenbin $antbin $gradlebin $cargobin $gobin)
+bins+=(${pingcap_bin[@]})
+
+# for all bin
+for bin in ${bins[@]}; do
+	if [[ ! `echo $PATH|grep $bin` ]]; then
+		if [[ -d $bin ]]; then
+			PATH=$PATH:$bin
+		fi
+	fi
+done
+export PATH
+
+[[ -f $HOME/.proxyrc ]] && source $HOME/.proxyrc
+
+# for cnpm
+alias npm="cnpm"
+
+# for cc
+export CC=clang

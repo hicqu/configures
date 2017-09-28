@@ -1,0 +1,75 @@
+### oh-my-zsh
+ZSH=~/.oh-my-zsh
+ZSH_THEME="qupeng"
+DISABLE_AUTO_UPDATE="true"
+CASE_SENSITIVE="true"
+plugins=(git extract pip rustup rust cargo)
+
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+
+source $ZSH/oh-my-zsh.sh
+unsetopt AUTO_CD  # disable auto_cd when type dirname
+
+### for coreutils on Mac
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+export TERM="xterm-256color"
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export CARGO_HOME=~/.cargo
+export GOPATH=~/.go
+export PINGCAP_PATH=$GOPATH/src/github.com/pingcap
+
+localbin=~/.local/bin
+mavenbin=/opt/java-utils/maven-3.3.9/bin
+antbin=/opt/java-utils/ant-1.9.7/bin
+gradlebin=/opt/java-utils/gradle-3.2.1/bin
+cargobin=$CARGO_HOME/bin
+gobin=$GOPATH/bin
+pingcap_bin=($PINGCAP_PATH/tidb/bin $PINGCAP_PATH/pd/bin $PINGCAP_PATH/tidb-tools/bin)
+
+bins=($localbin $mavenbin $antbin $gradlebin $cargobin $gobin)
+bins+=(${pingcap_bin[@]})
+for bin in ${bins[@]}; do
+	if [[ ! `echo $PATH|grep $bin` ]]; then
+		if [[ -d $bin ]]; then
+			export PATH=$PATH:$bin
+		fi
+	fi
+done
+
+### key maps and alias
+bindkey '^_[[Z' reverse-menu-complete
+alias rm="rm -i"
+alias ls="ls -h --color=auto"
+alias ll="ls -l"
+alias cc="clear"
+alias gg="exit"
+alias vi="vim"
+alias tar="gtar"
+alias sc="systemctl"
+alias scu="systemctl --user"
+eval `dircolors ~/.dircolors`
+
+fg() {
+	if [[ $# -eq 1 && $1 == - ]]; then
+		builtin fg %-
+	else
+		builtin fg %"$@"
+	fi
+}
+
+bg() {
+	if [[ $# -eq 1 && $1 == - ]]; then
+		builtin bg %-
+	else
+		builtin bg %"$@"
+	fi
+}
+
+source /usr/local/Cellar/zsh-syntax-highlighting/0.5.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# export http_proxy=localhost:1087
+# export https_proxy=localhost:1087

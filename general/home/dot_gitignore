@@ -1,0 +1,13 @@
+.gitattributes
+
+cscope.*
+*.bk
+
+**/*.swp
+
+# for tidb
+_vendor/pkg
+
+# for some temp
+a.txt
+b.txt

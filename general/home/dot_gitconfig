@@ -1,0 +1,26 @@
+[user]
+	name = qupeng
+	email = onlyqupeng@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[push]
+	default = simple
+[core]
+	editor = vim
+	pager = less -x1,5
+	excludesfile = ~/.gitignore
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+    df = diff
+	dt = difftool
+[colors]
+	ui = true
+[http]
+	cookiefile = /home/qupeng/.gitcookies
+[diff "nodiff"]
+	command = /bin/true

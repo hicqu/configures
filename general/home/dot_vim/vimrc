@@ -1,0 +1,83 @@
+" for vundle
+source ~/.vim/vundle_vimrc
+source ~/.vim/basic_vimrc
+
+" Leader
+let mapleader=","
+
+" 左右窗口设置
+map <F5> :NERDTreeToggle<CR>
+
+" 生成代码索引
+map <C-F10> :!ctags -R .<CR><CR>
+map <C-F11> :!cscope -bqR<CR><CR> :cs add cscope.out<CR>
+
+" 丢弃缓冲区，重新加载
+map <C-l> :e!<CR>
+
+" 头文件搜索路径，for C language
+set path+=/usr/local/include
+set path+=/usr/include/c++/6.3.1
+
+" for cscope and ctags
+if has("cscope")
+	set csprg=cscope
+	set csto=0
+	set cst
+	set nocsverb
+	if filereadable("cscope.out")
+		cs add cscope.out
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+	set csverb
+endif
+
+" for taglist
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Auto_Open = 0
+
+" for NERDTree
+let NERDChistmastree = 1
+
+" for clang-complete
+let g:clang_complete_copen = 1
+let g:clang_periodic_quick_fix = 1
+let g:clang_snippets = 1
+let g:clang_close_preview = 1
+let g:clang_use_library = 1
+
+" for syntastic
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_flake8_exec = "python2"	" 默认python3的环境加这一句
+let g:syntastic_python_flake8_args = "-m flake8 --max-line-length=1048"	" 最大行长度为1048
+let g:syntastic_go_checkers=['']
+let g:loaded_syntastic_java_javac_checker = 1
+" let g:syntastic_rust_checkers = ['rustc']
+
+" for noexpandtab
+function Tab8()
+    set noexpandtab
+    set tabstop=8
+endfunction
+au BufEnter,BufNew *.conf call Tab8()
+au BufEnter,BufNew *.proto call Tab8()
+au BufEnter,BufNew *.y call Tab8()
+
+" for rust and racer
+let g:rustfmt_autosave = 1
+set hidden
+let g:racer_cmd = "racer"
+let g:racer_experimental_completer = 1
+let $RUST_SRC_PATH="/home/qupeng/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+au BufEnter,BufNew *.lalrpop set ft=rust
