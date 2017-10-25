@@ -30,7 +30,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab					" 用空格代替制表符
 
-set nowrap						" 不自动折行
+" set nowrap					" 不自动折行
 set splitright
 set splitbelow
 
