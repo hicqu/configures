@@ -56,8 +56,8 @@ let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_exec = "python2"	" 默认python3的环境加这一句
 let g:syntastic_python_flake8_args = "-m flake8 --max-line-length=1048"	" 最大行长度为1048
 let g:syntastic_go_checkers=['']
-let g:loaded_syntastic_java_javac_checker = 1
 " let g:syntastic_rust_checkers = ['rustc']
+let g:loaded_syntastic_java_javac_checker = 1
 
 " for noexpandtab
 function Tab8()

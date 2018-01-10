@@ -38,7 +38,6 @@ alias npm="cnpm"
 export CC=clang
 
 # for rust
-export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
 rust_root=$(rustc --print sysroot)
 if [[ ! `echo $LD_LIBRARY_PATH|grep $rust_root` ]]; then
     export LD_LIBRARY_PATH=$rust_root/lib:$LD_LIBRARY_PATH
