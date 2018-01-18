@@ -36,3 +36,9 @@ alias npm="cnpm"
 
 # for cc
 export CC=clang
+
+# for rust
+rust_root=$(rustc --print sysroot)
+if [[ ! `echo $LD_LIBRARY_PATH|grep $rust_root` ]]; then
+    export LD_LIBRARY_PATH=$rust_root/lib:$LD_LIBRARY_PATH
+fi

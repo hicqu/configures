@@ -1,6 +1,6 @@
 [user]
 	name = qupeng
-	email = onlyqupeng@gmail.com
+    email = qupeng@pingcap.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f

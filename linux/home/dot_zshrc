@@ -1,19 +1,5 @@
-### oh-my-zsh
-ZSH=~/.oh-my-zsh
-ZSH_THEME="qupeng"
-DISABLE_AUTO_UPDATE="true"
-CASE_SENSITIVE="true"
-plugins=(rust rustup cargo pip)
-
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
-
-source $ZSH/oh-my-zsh.sh
-unsetopt AUTO_CD  # disable auto_cd when type dirname
-
 export TERM="xterm-256color"
 export CARGO_HOME=~/.cargo
-# export GOROOT=/home/qupeng/.local/go
 export GOPATH=/home/qupeng/.go
 export PINGCAP_PATH=$GOPATH/src/github.com/pingcap
 
@@ -71,8 +57,41 @@ bg() {
 	fi
 }
 
-[[ -f ~/.proxyrc ]] && source ~/.proxyrc
+if [ ! `echo $LD_LIBRARY_PATH | grep "/usr/local"` ]; then
+    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+fi
 
-# for develop
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/qupeng/.rustup/toolchains/nightly-2017-08-09-x86_64-unknown-linux-gnu/lib
-export LIBRARY_PATH=$LD_LIBRARY_PATH:/home/qupeng/.rustup/toolchains/nightly-2017-08-09-x86_64-unknown-linux-gnu/lib
+if [ ! `echo $LD_LIBRARY_PATH | grep -E "\.local"` ]; then
+    export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=~/.local/lib:$LIBRARY_PATH
+fi
+
+# for rust
+if [ ! `echo $LD_LIBRARY_PATH | grep "rustup"` ]; then
+    rust_root=$(rustc --print sysroot)
+    export LD_LIBRARY_PATH=$rust_root/lib:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=$rust_root/lib:$LD_LIBRARY_PATH
+fi
+
+# for go
+gopath=/usr/local/go/bin
+if [ ! `echo $PATH|grep $gopath` ]; then
+	export PATH=$PATH:$gopath
+fi
+
+### oh-my-zsh
+ZSH=~/.oh-my-zsh
+ZSH_THEME="qupeng"
+DISABLE_AUTO_UPDATE="true"
+CASE_SENSITIVE="true"
+plugins=(rust rustup cargo pip)
+
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+
+source $ZSH/oh-my-zsh.sh
+unsetopt AUTO_CD  # disable auto_cd when type dirname
+
+autoload -U compinit
+compinit

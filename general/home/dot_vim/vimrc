@@ -56,8 +56,8 @@ let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_exec = "python2"	" 默认python3的环境加这一句
 let g:syntastic_python_flake8_args = "-m flake8 --max-line-length=1048"	" 最大行长度为1048
 let g:syntastic_go_checkers=['']
-let g:loaded_syntastic_java_javac_checker = 1
 " let g:syntastic_rust_checkers = ['rustc']
+let g:loaded_syntastic_java_javac_checker = 1
 
 " for noexpandtab
 function Tab8()
@@ -69,15 +69,16 @@ au BufEnter,BufNew *.proto call Tab8()
 au BufEnter,BufNew *.y call Tab8()
 
 " for rust and racer
+au BufEnter,BufNew *.rs set ft=rust
+au BufEnter,BufNew *.lalrpop set ft=rust
+
 let g:rustfmt_autosave = 1
 set hidden
-let g:racer_cmd = "racer"
+let g:racer_cmd = "/home/qupeng/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-let $RUST_SRC_PATH="/home/qupeng/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+let $RUST_SRC_PATH="/home/qupeng/.rustup/toolchains/nightly-2017-08-09-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-au BufEnter,BufNew *.lalrpop set ft=rust
