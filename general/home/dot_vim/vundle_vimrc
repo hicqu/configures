@@ -27,6 +27,7 @@ Plugin 'cstrahan/vim-capnp'
 Plugin 'fatih/vim-go'
 Plugin 'Blackrush/vim-gocode', {'rtp': 'vim/'}
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'jiangmiao/auto-pairs'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
