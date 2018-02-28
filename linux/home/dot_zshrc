@@ -1,4 +1,41 @@
+# terminal settings.
 export TERM="xterm-256color"
+
+# oh-my-zsh
+ZSH=~/.oh-my-zsh
+ZSH_THEME="qupeng"
+DISABLE_AUTO_UPDATE="true"
+CASE_SENSITIVE="true"
+plugins=(rust rustup cargo pip git)
+
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+
+source $ZSH/oh-my-zsh.sh
+unsetopt AUTO_CD  # disable auto_cd when type dirname
+
+autoload -U compinit
+compinit
+
+# key maps and alias
+bindkey '^_[[Z' reverse-menu-complete
+alias rm="rm -i"
+alias ls="ls -h --color=auto"
+alias ll="ls -l"
+alias cc="clear"
+alias gg="exit"
+alias vi="vim"
+alias sc="systemctl"
+alias scu="systemctl --user"
+alias gst="git status"
+alias gbv="git branch -v"
+alias gd="git diff"
+alias gdn="git diff --name-only"
+alias gdt="git difftool"
+alias gdtn="git difftool --name-only"
+eval `dircolors ~/.dircolors`
+
+# dev settings.
 export CARGO_HOME=~/.cargo
 export GOPATH=/home/qupeng/.go
 export PINGCAP_PATH=$GOPATH/src/github.com/pingcap
@@ -22,24 +59,6 @@ for bin in ${bins[@]}; do
 	fi
 done
 export PATH=$mypath:$PATH
-
-### key maps and alias
-bindkey '^_[[Z' reverse-menu-complete
-alias rm="rm -i"
-alias ls="ls -h --color=auto"
-alias ll="ls -l"
-alias cc="clear"
-alias gg="exit"
-alias vi="vim"
-alias sc="systemctl"
-alias scu="systemctl --user"
-alias gst="git status"
-alias gbv="git branch -v"
-alias gd="git diff"
-alias gdn="git diff --name-only"
-alias gdt="git difftool"
-alias gdtn="git difftool --name-only"
-eval `dircolors ~/.dircolors`
 
 fg() {
 	if [ $# -eq 1 && $1 == - ]; then
@@ -80,19 +99,3 @@ gopath=/usr/local/go/bin
 if [ ! `echo $PATH|grep $gopath` ]; then
 	export PATH=$PATH:$gopath
 fi
-
-### oh-my-zsh
-ZSH=~/.oh-my-zsh
-ZSH_THEME="qupeng"
-DISABLE_AUTO_UPDATE="true"
-CASE_SENSITIVE="true"
-plugins=(rust rustup cargo pip)
-
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
-
-source $ZSH/oh-my-zsh.sh
-unsetopt AUTO_CD  # disable auto_cd when type dirname
-
-autoload -U compinit
-compinit
