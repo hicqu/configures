@@ -89,10 +89,6 @@ fi
 # for rust
 export RUST_ROOT=$(rustc --print sysroot)
 export RUST_SRC_PATH=$RUST_ROOT/lib/rustlib/src/rust/src
-if [ ! `echo $LD_LIBRARY_PATH | grep $RUST_ROOT` ]; then
-    export LD_LIBRARY_PATH=$RUST_ROOT/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=$RUST_ROOT/lib:$LD_LIBRARY_PATH
-fi
 
 # for go
 gopath=/usr/local/go/bin
