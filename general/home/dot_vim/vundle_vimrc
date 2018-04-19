@@ -2,12 +2,9 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
-
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
