@@ -18,6 +18,10 @@ unsetopt AUTO_CD  # disable auto_cd when type dirname
 autoload -U compinit
 compinit
 
+# for syntax-highlighting.
+highlighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f $highlighting ] && source $highlighting
+
 # key maps and alias
 bindkey '^_[[Z' reverse-menu-complete
 alias rm="rm -i"
@@ -35,47 +39,42 @@ alias gdn="git diff --name-only"
 alias gdt="git difftool"
 alias gdtn="git difftool --name-only"
 
-# dev settings.
-export CARGO_HOME=~/.cargo
-export GOPATH=/home/qupeng/.go
+# general dev settings.
+local_bin=~/.local/bin
+cargo_bin=$CARGO_HOME/bin
 
-# for rust
-export RUST_ROOT=$(rustc --print sysroot)
-export RUST_SRC_PATH=$RUST_ROOT/lib/rustlib/src/rust/src
-if [ ! `echo $LD_LIBRARY_PATH | grep $RUST_ROOT` ]; then
-    export LD_LIBRARY_PATH=$RUST_ROOT/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=$RUST_ROOT/lib:$LIBRARY_PATH
-fi
-
-localbin=~/.local/bin
-cargobin=$CARGO_HOME/bin
-rustbin=$RUST_ROOT/bin
-gobin=$GOPATH/bin
-
-bins=($localbin $cargobin $rustbin $gobin /home/qupeng/.local/opt/go/bin)
-mypath=""
+bins=($local_bin $cargo_bin)
 for bin in ${bins[@]}; do
-	if [ ! `echo $PATH|grep $bin` ]; then
-		if [[ -d $bin ]]; then
-			mypath=$mypath:$bin
-		fi
+	if [ -d $bin ] && [ `echo $PATH|grep $bin` ]; then
+		export PATH=$bin:$PATH
 	fi
 done
-export PATH=$mypath:$PATH
 
-if [ ! `echo $LD_LIBRARY_PATH | grep "/usr/local"` ]; then
-    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=/usr/local/lib:$LIBRARY_PATH
+# for go.
+[[ -d ~/.cargo ]] && export CARGO_HOME=~/.cargo
+[[ -d ~/.go ]] && export GOPATH=~/.go
+
+# for rust.
+rust_root=$(rustc --print sysroot 2>/dev/null)
+if [ ! -z $rust_root ]; then
+	export RUST_ROOT=$rust_root
+	export RUST_SRC_PATH=$RUST_ROOT/lib/rustlib/src/rust/src
+	if [ ! `echo $LD_LIBRARY_PATH|grep $RUST_ROOT` ]; then
+		export LD_LIBRARY_PATH=$RUST_ROOT/lib:$LD_LIBRARY_PATH
+		export LIBRARY_PATH=$RUST_ROOT/lib:$LIBRARY_PATH
+	fi
 fi
 
-if [ ! `echo $LD_LIBRARY_PATH | grep -E "\.local"` ]; then
-    export LD_LIBRARY_PATH=~/.local/lib:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=~/.local/lib:$LIBRARY_PATH
-    export C_INCLUDE_PATH=~/.local/include:$C_INCLUDE_PATH
-fi
+lib_paths=("/usr/local/lib" "$HOME/.local/lib")
+for lib_path in ${lib_paths[@]}; do
+	if [ ! `echo $LD_LIBRARY_PATH|grep $lib_path` ]; then
+		export LD_LIBRARY_PATH=$lib_path:$LD_LIBRARY_PATH
+		export LIBRARY_PATH=$lib_path:$LIBRARY_PATH
+	fi
+done
 
-if [ ! `echo $MANPATH | grep -E "\.local"` ] ;then
-    export MANPATH=~/.local/share/man:$MANPATH
+if [ ! `echo $MANPATH|grep -E "$HOME/.local/share/man"` ]; then
+    export MANPATH=$HOME/.local/share/man:$MANPATH
 fi
 
 fg() {
