@@ -1,0 +1,30 @@
+call plug#begin('~/.vim/bundle')
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+Plug 'tclh123/vim-thrift', { 'for': 'thrift' }
+Plug 'dylon/vim-antlr', { 'for': 'antlr' }
+Plug 'sukima/xmledit', { 'for': 'xml' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Blackrush/vim-gocode', { 'for': 'go', 'rtp': 'vim/'}
+Plug 'Matt-Deacalion/vim-systemd-syntax', { 'for': 'systemd' }
+Plug 'cespare/vim-toml', { 'for': 'toml'}
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
+Plug 'Valloric/YouCompleteMe'
+Plug 'cstrahan/vim-capnp'
+
+Plug 'chr4/nginx.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'w0rp/ale'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'rust'] }
+Plug 'sgur/vim-textobj-parameter'
+
+call plug#end()
