@@ -8,30 +8,12 @@ let mapleader=","
 " 左右窗口设置
 map <F5> :NERDTreeToggle<CR>
 
-" 生成代码索引
-map <C-F10> :!ctags -R .<CR><CR>
-map <C-F11> :!cscope -bqR<CR><CR> :cs add cscope.out<CR>
-
 " 丢弃缓冲区，重新加载
 map <C-l> :e!<CR>
 
 " 头文件搜索路径，for C language
 set path+=/usr/local/include
 set path+=/usr/include/c++/6.3.1
-
-" for cscope and ctags
-if has("cscope")
-	set csprg=cscope
-	set csto=0
-	set cst
-	set nocsverb
-	if filereadable("cscope.out")
-		cs add cscope.out
-	elseif $CSCOPE_DB != ""
-		cs add $CSCOPE_DB
-	endif
-	set csverb
-endif
 
 " for taglist 
 let Tlist_Show_One_File = 1
@@ -75,39 +57,25 @@ let g:ale_cpp_cppcheck_options = ''
 " for NERDTree
 let NERDChistmastree = 1
 
-" for clang-complete
-let g:clang_complete_copen = 1
-let g:clang_periodic_quick_fix = 1
-let g:clang_snippets = 1
-let g:clang_close_preview = 1
-let g:clang_use_library = 1
-
 "for YouCompleteMe
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+let g:ycm_complete_in_strings=0
 set completeopt=menu,menuone
 
-noremap <c-z> <NOP>
-
 let g:ycm_semantic_triggers =  {
-           \ 'c,cpp,python,go,rust': ['re!\w{2}'],
-           \ 'cs,lua,javascript': ['re!\w{2}'],
-           \ }
+            \ 'c,cpp,python,go,rust': ['re!\w{5}'],
+            \ 'cs,lua,javascript': ['re!\w{5}'],
+            \ }
 
-" for syntastic
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_exec = "python2"	" 默认python3的环境加这一句
-let g:syntastic_python_flake8_args = "-m flake8 --max-line-length=1048"	" 最大行长度为1048
-let g:syntastic_go_checkers=['']
-" let g:syntastic_rust_checkers = ['rustc']
-let g:loaded_syntastic_java_javac_checker = 1
+au FileType c,rust nnoremap gd  :YcmCompleter GoToDefinition<CR>
+au FileType c,rust nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,rust nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,rust nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
 
 " for noexpandtab
 function Tab8()
@@ -121,13 +89,4 @@ au BufEnter,BufNew *.y call Tab8()
 " for rust and racer
 au BufEnter,BufNew *.rs set ft=rust
 au BufEnter,BufNew *.lalrpop set ft=rust
-
 let g:rustfmt_autosave = 1
-set hidden
-let g:racer_cmd = "/home/qupeng/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
