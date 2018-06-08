@@ -40,16 +40,16 @@ alias gdt="git difftool"
 alias gdtn="git difftool --name-only"
 
 # general dev settings.
-[[ -d ~/.cargo ]] && export CARGO_HOME=~/.cargo
-[[ -d ~/.go ]] && export GOPATH=~/.go
+[ -d ~/.cargo ] && export CARGO_HOME=~/.cargo
+[ -d ~/.go ] && export GOPATH=~/.go
 
 local_bin=~/.local/bin
 cargo_bin=~/.cargo/bin
-go_bin=~/.local/opt/go/bin
-go_path_bin=~/.go/bin
-bins=($local_bin $cargo_bin $go_bin $go_path_bin)
+go_bin=~/.go/bin
+bins=($local_bin $cargo_bin $go_bin)
 for bin in ${bins[@]}; do
-	if [ -d $bin ] && [ ! `echo $PATH|grep $bin` ]; then
+    [ ! -d $bin ] && mkdir -p $bin
+	if [ ! `echo $PATH|grep $bin` ]; then
 		export PATH=$bin:$PATH
 	fi
 done
@@ -62,6 +62,7 @@ for lib_path in ${lib_paths[@]}; do
 	fi
 done
 
+[ ! -d "$HOME/.local/share/man" ] && mkdir -p "$HOME/.local/share/man"
 if [ ! `echo $MANPATH|grep -E "$HOME/.local/share/man"` ]; then
     export MANPATH=$HOME/.local/share/man:$MANPATH
 fi
