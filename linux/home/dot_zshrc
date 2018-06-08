@@ -40,30 +40,19 @@ alias gdt="git difftool"
 alias gdtn="git difftool --name-only"
 
 # general dev settings.
-local_bin=~/.local/bin
-cargo_bin=$CARGO_HOME/bin
-
-bins=($local_bin $cargo_bin)
-for bin in ${bins[@]}; do
-	if [ -d $bin ] && [ `echo $PATH|grep $bin` ]; then
-		export PATH=$bin:$PATH
-	fi
-done
-
-# for go.
 [[ -d ~/.cargo ]] && export CARGO_HOME=~/.cargo
 [[ -d ~/.go ]] && export GOPATH=~/.go
 
-# for rust.
-rust_root=$(rustc --print sysroot 2>/dev/null)
-if [ ! -z $rust_root ]; then
-	export RUST_ROOT=$rust_root
-	export RUST_SRC_PATH=$RUST_ROOT/lib/rustlib/src/rust/src
-	if [ ! `echo $LD_LIBRARY_PATH|grep $RUST_ROOT` ]; then
-		export LD_LIBRARY_PATH=$RUST_ROOT/lib:$LD_LIBRARY_PATH
-		export LIBRARY_PATH=$RUST_ROOT/lib:$LIBRARY_PATH
+local_bin=~/.local/bin
+cargo_bin=~/.cargo/bin
+go_bin=~/.local/opt/go/bin
+go_path_bin=~/.go/bin
+bins=($local_bin $cargo_bin $go_bin $go_path_bin)
+for bin in ${bins[@]}; do
+	if [ -d $bin ] && [ ! `echo $PATH|grep $bin` ]; then
+		export PATH=$bin:$PATH
 	fi
-fi
+done
 
 lib_paths=("/usr/local/lib" "$HOME/.local/lib")
 for lib_path in ${lib_paths[@]}; do
