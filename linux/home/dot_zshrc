@@ -7,14 +7,13 @@ ZSH=~/.oh-my-zsh
 ZSH_THEME="qupeng"
 DISABLE_AUTO_UPDATE="true"
 CASE_SENSITIVE="true"
-plugins=(rust rustup cargo pip git)
-
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+[ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
 
+plugins=(rust rustup cargo pip git)
 source $ZSH/oh-my-zsh.sh
-unsetopt AUTO_CD  # disable auto_cd when type dirname
 
+unsetopt AUTO_CD  # disable auto_cd when type dirname
 autoload -U compinit
 compinit
 
@@ -40,8 +39,8 @@ alias gdt="git difftool"
 alias gdtn="git difftool --name-only"
 
 # general dev settings.
-[ -d ~/.cargo ] && export CARGO_HOME=~/.cargo
-[ -d ~/.go ] && export GOPATH=~/.go
+export CARGO_HOME=~/.cargo
+export GOPATH=~/.go
 
 local_bin=~/.local/bin
 cargo_bin=~/.cargo/bin
@@ -53,6 +52,10 @@ for bin in ${bins[@]}; do
 		export PATH=$bin:$PATH
 	fi
 done
+
+if [ ! `echo $PATH|grep ".local/opt/go/bin"` ]; then
+    export PATH=~/.local/opt/go/bin:$PATH
+fi
 
 lib_paths=("/usr/local/lib" "$HOME/.local/lib")
 for lib_path in ${lib_paths[@]}; do
