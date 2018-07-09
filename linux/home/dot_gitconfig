@@ -15,6 +15,7 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+	trustExitCode = true
 [alias]
     df = diff
 	dt = difftool
