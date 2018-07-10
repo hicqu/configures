@@ -26,5 +26,6 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'rust', 'go'] }
 Plug 'sgur/vim-textobj-parameter'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
