@@ -14,7 +14,7 @@ Plug 'Matt-Deacalion/vim-systemd-syntax', { 'for': 'systemd' }
 Plug 'cespare/vim-toml', { 'for': 'toml'}
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust', 'go'] }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust'] }
 Plug 'cstrahan/vim-capnp'
 
 Plug 'chr4/nginx.vim'
