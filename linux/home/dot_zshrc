@@ -65,10 +65,22 @@ for lib_path in ${lib_paths[@]}; do
 	fi
 done
 
+if [ ! `echo $C_INCLUDE_PATH|grep -E "$HOME/.local/include"` ]; then
+    export C_INCLUDE_PATH=$HOME/.local/include:$C_INCLUDE_PATH
+    export CPLUS_INCLUDE_PATH=$HOME/.local/include:$CPLUS_INCLUDE_PATH
+fi
+
 [ ! -d "$HOME/.local/share/man" ] && mkdir -p "$HOME/.local/share/man"
 if [ ! `echo $MANPATH|grep -E "$HOME/.local/share/man"` ]; then
     export MANPATH=$HOME/.local/share/man:$MANPATH
 fi
+
+pkgconfig_paths=("/usr/lib/pkgconfig" "/usr/local/lib/pkgconfig" "$HOME/.local/lib/pkgconfig")
+for pkgconfig_path in ${pkgconfig_paths[@]}; do
+    if [ ! `echo $PKG_CONFIG_PATH|grep -E $pkgconfig_path` ]; then
+        export PKG_CONFIG_PATH=$pkgconfig_path:$PKG_CONFIG_PATH
+    fi
+done
 
 fg() {
 	if [ $# -eq 1 && $1 == - ]; then
@@ -85,3 +97,6 @@ bg() {
 		builtin bg %"$@"
 	fi
 }
+
+# for k8s
+export TILLER_NAMESPACE=qupeng

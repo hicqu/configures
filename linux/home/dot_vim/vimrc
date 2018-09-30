@@ -89,6 +89,7 @@ au BufEnter,BufNew *.y call Tab8()
 " for rust and racer
 au BufEnter,BufNew *.rs set ft=rust
 au BufEnter,BufNew *.lalrpop set ft=rust
+let g:rustfmt_autosave = 0
 if $RUSTFMT_NOTSAVE
     let g:rustfmt_autosave = 0
 else
