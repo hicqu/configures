@@ -62,7 +62,8 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_min_num_identifier_candidate_chars = 4
+let g:ycm_key_invoke_completion = '<c-x><c-o>'
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_complete_in_strings=0
 set completeopt=menu,menuone
@@ -72,10 +73,11 @@ let g:ycm_semantic_triggers =  {
             \ 'cs,lua,javascript': ['re!\w{5}'],
             \ }
 
-au FileType c,rust nnoremap gd  :YcmCompleter GoToDefinition<CR>
-au FileType c,rust nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,rust nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,rust nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
+au FileType c,cpp,rust nnoremap gd  :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
+au FileType cpp set shiftwidth=2
 
 " for noexpandtab
 function Tab8()

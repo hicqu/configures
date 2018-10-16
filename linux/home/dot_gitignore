@@ -2,6 +2,7 @@
 
 cscope.*
 *.bk
+compile_commands.json # for bear managed c/cpp projects.
 
 **/*.swp
 
