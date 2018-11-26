@@ -15,6 +15,9 @@ map <C-l> :e!<CR>
 set path+=/usr/local/include
 set path+=/usr/include/c++/6.3.1
 
+" for CtrlSF
+nnoremap <leader>f :CtrlSF<CR><C-w><C-w>
+
 " for taglist 
 let Tlist_Show_One_File = 1
 let Tlist_Exit_OnlyWindow = 1
@@ -73,10 +76,10 @@ let g:ycm_semantic_triggers =  {
             \ 'cs,lua,javascript': ['re!\w{5}'],
             \ }
 
-au FileType c,cpp,rust nnoremap gd  :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
+au FileType c,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cpp,rust,go nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
 au FileType cpp set shiftwidth=2
 
 " for noexpandtab
