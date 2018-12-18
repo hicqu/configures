@@ -26,7 +26,7 @@ bindkey '^_[[Z' reverse-menu-complete
 alias rm="rm -i"
 alias ls="ls -h --color=auto"
 alias ll="ls -l"
-alias cc="clear"
+# alias cc="clear"
 alias gg="exit"
 alias vi="vim"
 alias sc="systemctl"
