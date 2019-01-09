@@ -13,3 +13,6 @@ _vendor/pkg
 a.txt
 b.txt
 diff.txt
+
+# for bear
+compile_commands.json
