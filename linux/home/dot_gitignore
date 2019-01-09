@@ -16,3 +16,6 @@ diff.txt
 
 # for bear
 compile_commands.json
+
+# fuck go
+go.sum
