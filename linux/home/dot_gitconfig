@@ -25,5 +25,5 @@
 	cookiefile = /home/qupeng/.gitcookies
 [diff "nodiff"]
 	command = /bin/true
-[url "https://93e2847ba5f87ee5aba12856c9e1c166dabfc37b:@github.com/"]
-	insteadOf = https://github.com/
+# [url "https://93e2847ba5f87ee5aba12856c9e1c166dabfc37b:@github.com/"]
+# 	insteadOf = https://github.com/
