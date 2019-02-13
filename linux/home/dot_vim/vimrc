@@ -95,8 +95,8 @@ au BufEnter,BufNew *.y call Tab8()
 au BufEnter,BufNew *.rs set ft=rust
 au BufEnter,BufNew *.lalrpop set ft=rust
 let g:rustfmt_autosave = 0
-if $RUSTFMT_NOTSAVE
-    let g:rustfmt_autosave = 0
-else
-    let g:rustfmt_autosave = 1
-endif
+"if $RUSTFMT_NOTSAVE
+"    let g:rustfmt_autosave = 0
+"else
+"    let g:rustfmt_autosave = 1
+"endif
