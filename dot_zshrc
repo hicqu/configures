@@ -18,8 +18,12 @@ autoload -U compinit
 compinit
 
 # for syntax-highlighting.
-highlighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f $highlighting ] && source $highlighting
+if [ `uname` = "Linux" ]; then
+    hilighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ `uname` = "Darwin" ]; then
+    hilighting=/usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+[ -f $hilighting ] && source $hilighting
 
 # key maps and alias
 bindkey '^_[[Z' reverse-menu-complete
@@ -98,5 +102,5 @@ bg() {
 	fi
 }
 
-# for k8s
+# for k8s in pingcap
 export TILLER_NAMESPACE=qupeng
