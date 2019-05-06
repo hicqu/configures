@@ -20,7 +20,7 @@ Plug 'cstrahan/vim-capnp'
 
 Plug 'chr4/nginx.vim'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'

@@ -9,7 +9,7 @@
 	default = simple
 [core]
 	editor = vim
-	pager = less -x1,5
+	pager = less -FRSX
 	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
@@ -25,3 +25,5 @@
 	cookiefile = /home/qupeng/.gitcookies
 [diff "nodiff"]
 	command = /bin/true
+[color]
+	ui = on
