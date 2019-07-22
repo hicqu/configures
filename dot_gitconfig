@@ -23,7 +23,11 @@
 	ui = true
 [http]
 	cookiefile = /home/qupeng/.gitcookies
+[url "git@github.com:pingcap/"]
+    insteadOf = "https://github.com/pingcap/"
 [diff "nodiff"]
 	command = /bin/true
 [color]
 	ui = on
+[include]
+    path = "~/.gittoken"
