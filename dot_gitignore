@@ -19,3 +19,5 @@ compile_commands.json
 
 # fuck go
 go.sum
+
+config.h.in~
