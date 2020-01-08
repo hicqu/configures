@@ -8,7 +8,6 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'tclh123/vim-thrift', { 'for': 'thrift' }
 Plug 'dylon/vim-antlr', { 'for': 'antlr' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Blackrush/vim-gocode', { 'for': 'go', 'rtp': 'vim/'}
 Plug 'Matt-Deacalion/vim-systemd-syntax', { 'for': 'systemd' }
