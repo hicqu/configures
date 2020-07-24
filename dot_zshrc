@@ -114,3 +114,5 @@ eval `dircolors ~/.dircolors`
 # for k8s in pingcap
 export TILLER_NAMESPACE=qupeng
 source <(helm completion zsh)
+
+export PATH=/home/qupeng/.tiup/bin:$PATH

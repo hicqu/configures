@@ -23,8 +23,8 @@
 	ui = true
 [http]
 	cookiefile = /home/qupeng/.gitcookies
-# [url "git@github.com:pingcap/schrodinger.git"]
-#     insteadOf = "https://github.com/pingcap/schrodinger.git"
+[url "git@github.com:pingcap/schrodinger"]
+    insteadOf = "https://github.com/pingcap/schrodinger"
 [diff "nodiff"]
 	command = /bin/true
 [color]
