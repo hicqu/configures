@@ -4,6 +4,7 @@ set nocompatible                " Use Vim defaults instead of 100% vi compatibil
 set backspace=indent,eol,start  " more powerful backspacing
 set history=50                  " keep 50 lines of command line history
 set ruler                       " show the cursor position all the time
+set cursorline
 
 " 各种显示中文
 set fileencodings=utf-8,gb2312,cs-bom,gb18030,gbk,cp936

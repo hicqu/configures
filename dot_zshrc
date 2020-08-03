@@ -67,7 +67,7 @@ if [ `uname` = "Darwin" ]; then
     export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
-lib_paths=("/usr/local/lib" "$HOME/.local/lib")
+lib_paths=("/usr/local/lib" "$HOME/.local/lib" "$HOME/.local/lib64")
 for lib_path in ${lib_paths[@]}; do
 	if [ ! `echo $LD_LIBRARY_PATH|grep $lib_path` ]; then
 		export LD_LIBRARY_PATH=$lib_path:$LD_LIBRARY_PATH
@@ -113,6 +113,6 @@ eval `dircolors ~/.dircolors`
 
 # for k8s in pingcap
 export TILLER_NAMESPACE=qupeng
-source <(helm completion zsh)
+# source <(helm completion zsh)
 
 export PATH=/home/qupeng/.tiup/bin:$PATH
