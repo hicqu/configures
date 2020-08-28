@@ -1,35 +1,20 @@
-# terminal settings.
-export TERM="xterm-256color"
-
-# oh-my-zsh
-ZSH=~/.oh-my-zsh
-ZSH_THEME="qupeng"
-DISABLE_AUTO_UPDATE="true"
-CASE_SENSITIVE="true"
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-[ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
-
-plugins=(rust rustup cargo pip git kubectl helm)
-source $ZSH/oh-my-zsh.sh
-
-unsetopt AUTO_CD  # disable auto_cd when type dirname
-autoload -U compinit
-compinit
-
-# for syntax-highlighting.
-if [ `uname` = "Linux" ]; then
-    hilighting=/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [ `uname` = "Darwin" ]; then
-    hilighting=/usr/local/Cellar/zsh-syntax-highlighting/0.6.0/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-[ -f $hilighting ] && source $hilighting
+old_path=$PATH
+source $HOME/.antigen.zsh
+antigen use oh-my-zsh
+antigen theme qupeng
+antigen bundle git
+antigen bundle systemd
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen apply
+PATH=$old_path
 
 # key maps and alias
 bindkey '^_[[Z' reverse-menu-complete
 alias rm="rm -i"
 alias ls="ls -h --color=auto"
 alias ll="ls -l"
-# alias cc="clear"
 alias gg="exit"
 alias vi="vim"
 alias sc="systemctl"
@@ -112,7 +97,10 @@ bg() {
 eval `dircolors ~/.dircolors`
 
 # for k8s in pingcap
-export TILLER_NAMESPACE=qupeng
+# export TILLER_NAMESPACE=qupeng
 # source <(helm completion zsh)
 
-export PATH=/home/qupeng/.tiup/bin:$PATH
+# tiup.
+if [ ! `echo $PATH|grep "tiup"` ]; then
+    export PATH=$HOME/.tiup/bin:$PATH
+fi
