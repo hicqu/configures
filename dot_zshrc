@@ -1,3 +1,7 @@
+export TERM=xterm-256color
+export LANG="zh_CN.UTF-8"
+export LC_ALL="zh_CN.UTF-8"
+
 old_path=$PATH
 source $HOME/.antigen.zsh
 antigen use oh-my-zsh
@@ -36,9 +40,9 @@ go_bin=~/.go/bin
 bins=($local_bin $cargo_bin $go_bin)
 for bin in ${bins[@]}; do
     [ ! -d $bin ] && mkdir -p $bin
-	if [ ! `echo $PATH|grep $bin` ]; then
-		export PATH=$bin:$PATH
-	fi
+    if [ ! `echo $PATH|grep $bin` ]; then
+        export PATH=$bin:$PATH
+    fi
 done
 
 # for golang.
@@ -54,10 +58,10 @@ fi
 
 lib_paths=("/usr/local/lib" "$HOME/.local/lib" "$HOME/.local/lib64")
 for lib_path in ${lib_paths[@]}; do
-	if [ ! `echo $LD_LIBRARY_PATH|grep $lib_path` ]; then
-		export LD_LIBRARY_PATH=$lib_path:$LD_LIBRARY_PATH
-		export LIBRARY_PATH=$lib_path:$LIBRARY_PATH
-	fi
+    if [ ! `echo $LD_LIBRARY_PATH|grep $lib_path` ]; then
+        export LD_LIBRARY_PATH=$lib_path:$LD_LIBRARY_PATH
+        export LIBRARY_PATH=$lib_path:$LIBRARY_PATH
+    fi
 done
 
 if [ ! `echo $C_INCLUDE_PATH|grep -E "$HOME/.local/include"` ]; then
@@ -78,19 +82,19 @@ for pkgconfig_path in ${pkgconfig_paths[@]}; do
 done
 
 fg() {
-	if [ $# -eq 1 && $1 == - ]; then
-		builtin fg %-
-	else
-		builtin fg %"$@"
-	fi
+    if [ $# -eq 1 && $1 == - ]; then
+        builtin fg %-
+    else
+        builtin fg %"$@"
+    fi
 }
 
 bg() {
-	if [ $# -eq 1 && $1 == - ]; then
-		builtin bg %-
-	else
-		builtin bg %"$@"
-	fi
+    if [ $# -eq 1 && $1 == - ]; then
+        builtin bg %-
+    else
+        builtin bg %"$@"
+    fi
 }
 
 # dircolors.
