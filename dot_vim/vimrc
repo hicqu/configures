@@ -70,7 +70,8 @@ let g:ycm_min_num_of_chars_for_completion = 18
 let g:ycm_key_invoke_completion = '<c-x><c-o>'
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_complete_in_strings = 0
-let g:ycm_auto_trigger_delay = 1
+let g:ycm_auto_trigger_delay = 4
+let g:ycm_auto_hover = ''
 set completeopt=menu,menuone
 
 " let g:ycm_semantic_triggers =  {
@@ -81,7 +82,7 @@ set completeopt=menu,menuone
 au FileType c,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
 au FileType c,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
 au FileType c,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust,go nnoremap <leader>gd  :YcmCompleter GetDoc<CR>
+" au FileType c,cpp,rust,go nmap <leader>D <plug>(YCMHover)
 au FileType cpp set shiftwidth=2
 
 " for noexpandtab
