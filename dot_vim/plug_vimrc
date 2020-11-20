@@ -4,27 +4,19 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'dyng/ctrlsf.vim'
+Plug 'terryma/vim-multiple-cursors'
 
 Plug 'tclh123/vim-thrift', { 'for': 'thrift' }
 Plug 'dylon/vim-antlr', { 'for': 'antlr' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'Blackrush/vim-gocode', { 'for': 'go', 'rtp': 'vim/'}
 Plug 'Matt-Deacalion/vim-systemd-syntax', { 'for': 'systemd' }
 Plug 'cespare/vim-toml', { 'for': 'toml'}
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust', 'python', 'go'] }
 Plug 'cstrahan/vim-capnp'
 
-Plug 'ludovicchabant/vim-gutentags'
-
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-indent'
-Plug 'kana/vim-textobj-syntax'
-Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'rust', 'go'] }
-Plug 'sgur/vim-textobj-parameter'
-Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust', 'python', 'go'] }
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Blackrush/vim-gocode', { 'for': 'go', 'rtp': 'vim/'}
 
 call plug#end()
