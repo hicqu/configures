@@ -7,6 +7,7 @@ source $HOME/.antigen.zsh
 antigen use oh-my-zsh
 antigen theme qupeng
 antigen bundle git
+antigen bundle rustup
 antigen bundle systemd
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
