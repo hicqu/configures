@@ -1,19 +1,20 @@
-export TERM=xterm-256color
-export LANG="zh_CN.UTF-8"
-export LC_ALL="zh_CN.UTF-8"
+export TERM="xterm-256color"
+eval `dircolors ~/.dircolors`
 
-old_path=$PATH
-source $HOME/.antigen.zsh
-antigen use oh-my-zsh
-antigen theme qupeng
-antigen bundle git
-antigen bundle rustup
-antigen bundle systemd
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen apply
-PATH=$old_path
+# oh-my-zsh
+ZSH=~/.oh-my-zsh
+ZSH_THEME="qupeng"
+DISABLE_AUTO_UPDATE="true"
+CASE_SENSITIVE="true"
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+[ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
+
+plugins=(zsh-completions zsh-syntax-highlighting rustup cargo rust git)
+source $ZSH/oh-my-zsh.sh
+
+unsetopt AUTO_CD  # disable auto_cd when type dirname
+autoload -U compinit
+compinit
 
 # key maps and alias
 bindkey '^_[[Z' reverse-menu-complete
@@ -98,14 +99,5 @@ bg() {
     fi
 }
 
-# dircolors.
-eval `dircolors ~/.dircolors`
-
-# for k8s in pingcap
-# export TILLER_NAMESPACE=qupeng
-# source <(helm completion zsh)
-
 # tiup.
-if [ ! `echo $PATH|grep "tiup"` ]; then
-    export PATH=$HOME/.tiup/bin:$PATH
-fi
+export PATH=/home/qupeng/.tiup/bin:$PATH
