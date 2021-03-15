@@ -1,6 +1,9 @@
 export TERM="xterm-256color"
 eval `dircolors ~/.dircolors`
 
+export LANG="zh_CN.UTF-8"
+export LC_ALL="zh_CN.UTF-8"
+
 # oh-my-zsh
 ZSH=~/.oh-my-zsh
 ZSH_THEME="qupeng"
@@ -100,4 +103,6 @@ bg() {
 }
 
 # tiup.
-export PATH=/home/qupeng/.tiup/bin:$PATH
+if [ ! `echo $PATH|grep tiup` ]; then
+    export PATH=$HOME/.tiup/bin:$PATH
+fi
