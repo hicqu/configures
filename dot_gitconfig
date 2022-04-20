@@ -31,3 +31,5 @@
 	ui = on
 [include]
     path = "~/.gittoken"
+[pull]
+	rebase = false

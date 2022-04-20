@@ -24,7 +24,6 @@ filetype plugin indent on		" 自动检测文件类型
 set foldmethod=syntax           " 语法折叠
 au FileType python setl foldmethod=indent
 set foldnestmax=3				" fold level 2 max
-set fcs=fold:\					" 哪些类型需要折叠
 
 set tabstop=4					" 制表符相关
 set softtabstop=4
