@@ -9,7 +9,7 @@ CASE_SENSITIVE="true"
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 [ ! -d $ZSH_CACHE_DIR ] && mkdir $ZSH_CACHE_DIR
 
-plugins=(zsh-completions zsh-syntax-highlighting rustup cargo rust git)
+plugins=(zsh-completions zsh-syntax-highlighting rust git)
 source $ZSH/oh-my-zsh.sh
 
 unsetopt AUTO_CD  # disable auto_cd when type dirname
@@ -106,3 +106,5 @@ fi
 
 # fuck gcc
 export CXXFLAGS='-Warray-bounds=0'
+
+# source /opt/rh/devtoolset-8/enable
