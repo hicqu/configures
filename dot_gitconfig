@@ -2,9 +2,10 @@
 	name = qupeng
     email = qupeng@pingcap.com
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [push]
 	default = simple
 [core]
@@ -31,3 +32,5 @@
 	ui = on
 [include]
     path = "~/.gittoken"
+[pull]
+	rebase = false

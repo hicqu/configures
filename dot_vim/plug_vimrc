@@ -16,7 +16,5 @@ Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'cstrahan/vim-capnp'
 
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust', 'python', 'go'] }
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'Blackrush/vim-gocode', { 'for': 'go', 'rtp': 'vim/'}
 
 call plug#end()
