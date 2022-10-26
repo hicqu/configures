@@ -1,0 +1,12 @@
+[Unit]
+Description=Reverse ssh to 4.78
+ 
+[Service]
+WorkingDirectory=/home/qupeng
+ExecStart=ssh -CNR "*:62221:localhost:22" qupeng@172.16.4.78 -v
+ 
+Restart=always
+RestartSec=2
+ 
+[Install]
+WantedBy=default.target
