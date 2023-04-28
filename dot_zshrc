@@ -31,6 +31,7 @@ alias gd="git diff"
 alias gdn="git diff --name-only"
 alias gdt="git difftool"
 alias gdtn="git difftool --name-only"
+alias tmux="tmux -u"
 
 # general dev settings.
 export CARGO_HOME=~/.cargo
@@ -108,3 +109,6 @@ fi
 export CXXFLAGS='-Warray-bounds=0'
 
 # source /opt/rh/devtoolset-8/enable
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
