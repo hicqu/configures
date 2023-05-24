@@ -22,7 +22,8 @@ alias rm="rm -i"
 alias ls="ls -h --color=auto"
 alias ll="ls -l"
 alias gg="exit"
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 alias sc="systemctl"
 alias scu="systemctl --user"
 alias gst="git status"
@@ -109,6 +110,3 @@ fi
 export CXXFLAGS='-Warray-bounds=0'
 
 # source /opt/rh/devtoolset-8/enable
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
