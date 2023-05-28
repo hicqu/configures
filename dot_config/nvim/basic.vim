@@ -43,5 +43,3 @@ hi DiffText	ctermbg=235	ctermfg=208	guibg=#262626 guifg=#ff8700 cterm=reverse gu
 
 au FileType * set shiftwidth=4
 au FileType cpp set shiftwidth=2
-
-set completeopt-=preview
