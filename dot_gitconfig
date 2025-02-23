@@ -1,6 +1,6 @@
 [user]
 	name = qupeng
-    email = qupeng@pingcap.com
+	email = qupeng@pingcap.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -18,19 +18,24 @@
 	prompt = false
 	trustExitCode = true
 [alias]
-    df = diff
+	df = diff
 	dt = difftool
 [colors]
 	ui = true
 [http]
 	cookiefile = /home/qupeng/.gitcookies
 [url "git@github.com:pingcap/test-infra"]
-    insteadOf = "https://github.com/pingcap/test-infra"
+	insteadOf = "https://github.com/pingcap/test-infra"
+[url "git@github.com:pingcap/endless"]
+	insteadOf = "https://github.com/pingcap/endless"
 [diff "nodiff"]
 	command = /bin/true
 [color]
 	ui = on
 [include]
-    path = "~/.gittoken"
+	path = "~/.gittoken"
 [pull]
 	rebase = false
+[safe]
+	directory = /home/qupeng/github.com/tikv/kvproto
+	directory = /home/qupeng/github.com/tikv/kvproto
