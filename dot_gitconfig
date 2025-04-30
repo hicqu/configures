@@ -1,6 +1,12 @@
 [user]
-	name = qupeng
-	email = qupeng@pingcap.com
+	name = qupeng.1
+	email = qupeng.1@bytedance.com
+
+[url "ssh://qupeng.1@git.byted.org:"]
+	insteadOf = https://review.byted.org
+[url "git@code.byted.org:"]
+	insteadOf = https://code.byted.org/
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -24,10 +30,6 @@
 	ui = true
 [http]
 	cookiefile = /home/qupeng/.gitcookies
-[url "git@github.com:pingcap/test-infra"]
-	insteadOf = "https://github.com/pingcap/test-infra"
-[url "git@github.com:pingcap/endless"]
-	insteadOf = "https://github.com/pingcap/endless"
 [diff "nodiff"]
 	command = /bin/true
 [color]
@@ -36,6 +38,5 @@
 	path = "~/.gittoken"
 [pull]
 	rebase = false
-[safe]
-	directory = /home/qupeng/github.com/tikv/kvproto
-	directory = /home/qupeng/github.com/tikv/kvproto
+
+

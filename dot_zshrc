@@ -100,12 +100,9 @@ bg() {
     fi
 }
 
-# tiup.
-if [ ! `echo $PATH|grep tiup` ]; then
-    export PATH=$HOME/.tiup/bin:$PATH
+if [ ! `echo $PATH|grep "blade"` ]; then
+    export PATH=/opt/tiger/typhoon-blade:$PATH
 fi
-
-# fuck gcc
-export CXXFLAGS='-Warray-bounds=0'
-
-# source /opt/rh/devtoolset-8/enable
+if [ ! `echo $PATH|grep "bvc"` ]; then
+    export PATH=/usr/local/tao/agent/modules/bvc/bin:$PATH
+fi
