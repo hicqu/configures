@@ -100,9 +100,16 @@ bg() {
     fi
 }
 
-if [ ! `echo $PATH|grep "blade"` ]; then
-    export PATH=/opt/tiger/typhoon-blade:$PATH
-fi
 if [ ! `echo $PATH|grep "bvc"` ]; then
     export PATH=/usr/local/tao/agent/modules/bvc/bin:$PATH
 fi
+if [ ! `echo $PATH|grep "blade"` ]; then
+    export PATH=/opt/tiger/typhoon-blade:$PATH
+fi
+if [ ! `echo $PATH|grep "consul"` ]; then
+    export PATH=/opt/tiger/consul_deploy/bin:$PATH
+fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
