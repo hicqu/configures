@@ -53,36 +53,17 @@ if [ ! `echo $PATH|grep ".local/opt/go/bin"` ]; then
     export PATH=~/.local/opt/go/bin:$PATH
 fi
 
-# for mac os x.
-if [ `uname` = "Darwin" ]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+# for cmake.
+if [ ! `echo $PATH|grep ".local/opt/cmake"` ]; then
+    export PATH=~/.local/opt/cmake-3.31.7/bin:$PATH
 fi
 
-lib_paths=("/usr/local/lib" "$HOME/.local/lib" "$HOME/.local/lib64")
-for lib_path in ${lib_paths[@]}; do
-    if [ ! `echo $LD_LIBRARY_PATH|grep $lib_path` ]; then
-        export LD_LIBRARY_PATH=$lib_path:$LD_LIBRARY_PATH
-        export LIBRARY_PATH=$lib_path:$LIBRARY_PATH
-    fi
-done
-
-if [ ! `echo $C_INCLUDE_PATH|grep -E "$HOME/.local/include"` ]; then
-    export C_INCLUDE_PATH=$HOME/.local/include:$C_INCLUDE_PATH
-    export CPLUS_INCLUDE_PATH=$HOME/.local/include:$CPLUS_INCLUDE_PATH
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+if [ ! `echo $PATH|grep ".pyenv/versions"` ]; then
+    export PATH=`python-config --prefix`/bin:$PATH
 fi
-
-[ ! -d "$HOME/.local/share/man" ] && mkdir -p "$HOME/.local/share/man"
-if [ ! `echo $MANPATH|grep -E "$HOME/.local/share/man"` ]; then
-    export MANPATH=$HOME/.local/share/man:$MANPATH
-fi
-
-pkgconfig_paths=("/usr/lib/pkgconfig" "/usr/local/lib/pkgconfig" "$HOME/.local/lib/pkgconfig")
-for pkgconfig_path in ${pkgconfig_paths[@]}; do
-    if [ ! `echo $PKG_CONFIG_PATH|grep -E $pkgconfig_path` ]; then
-        export PKG_CONFIG_PATH=$pkgconfig_path:$PKG_CONFIG_PATH
-    fi
-done
 
 fg() {
     if [ $# -eq 1 && $1 == - ]; then
@@ -100,16 +81,6 @@ bg() {
     fi
 }
 
-if [ ! `echo $PATH|grep "bvc"` ]; then
-    export PATH=/usr/local/tao/agent/modules/bvc/bin:$PATH
-fi
 if [ ! `echo $PATH|grep "blade"` ]; then
     export PATH=/opt/tiger/typhoon-blade:$PATH
 fi
-if [ ! `echo $PATH|grep "consul"` ]; then
-    export PATH=/opt/tiger/consul_deploy/bin:$PATH
-fi
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
