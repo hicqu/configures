@@ -38,5 +38,3 @@
 	path = "~/.gittoken"
 [pull]
 	rebase = false
-
-
