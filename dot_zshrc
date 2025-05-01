@@ -108,4 +108,5 @@ fi
 # fuck gcc
 export CXXFLAGS='-Warray-bounds=0'
 
-# source /opt/rh/devtoolset-8/enable
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
