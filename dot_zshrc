@@ -40,13 +40,15 @@ for bin in ${bins[@]}; do
 done
 
 # for golang.
-if [ -d ".local/opt/go" ] && [ ! `echo $PATH|grep ".local/opt/go"` ]; then
-    export PATH="$HOME/.local/opt/go/bin:$PATH"
+golang_dir=`readlink -f "$HOME/.local/opt/go"`
+if [ -d "$golang_dir" ] && [ ! `echo $PATH|grep "$golang_dir"` ]; then
+    export PATH="$golang_dir:$PATH"
 fi
 
 # for cmake.
-if [ -d ".local/opt/cmake" ] && [ ! `echo $PATH|grep ".local/opt/cmake"` ]; then
-    export PATH="$HOME/.local/opt/cmake-3.31.7/bin:$PATH"
+cmake_dir=`readlink -f "$HOME/.local/opt/cmake"`
+if [ -d "$cmake_dir" ] && [ ! `echo $PATH|grep "$cmake_dir"` ]; then
+    export PATH="$cmake_dir/bin:$PATH"
 fi
 
 # for pyenv.
