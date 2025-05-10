@@ -13,7 +13,6 @@ let NERDChistmastree = 1
 set completeopt=menu,menuone
 let g:ycm_clangd_binary_path = '$HOME/.local/bin/clangd'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
@@ -24,15 +23,15 @@ let g:ycm_complete_in_strings = 0
 let g:ycm_auto_trigger_delay = 4
 let g:ycm_auto_hover = ''
 let g:ycm_semantic_triggers = {
-            \ 'c,cpp,python,go': ['re!\w{5}'],
+            \ 'c,cc,cpp,python,go': ['re!\w{5}'],
             \ 'cs,lua,javascript': ['re!\w{5}'],
             \ }
 
 " some develop options.
 au FileType cpp set shiftwidth=2
-au FileType c,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
 
 au BufEnter,BufNew *.conf call Tab8()
 au BufEnter,BufNew *.proto call Tab8()
