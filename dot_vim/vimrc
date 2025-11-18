@@ -1,37 +1,45 @@
 source ~/.vim/plug_vimrc
 source ~/.vim/basic_vimrc
 
-let mapleader=","
-nnoremap <leader>f :CtrlSF<CR><C-w><C-w>
-map <F5> :NERDTreeToggle<CR>
-map <C-l> :e!<CR>
-
 " for NERDTree.
 let NERDChistmastree = 1
+map <F5> :NERDTreeToggle<CR>
 
 "for YouCompleteMe.
 set completeopt=menu,menuone
+set updatetime=3000
+let g:ycm_use_clangd = 1
+let g:ycm_clangd_binary_path = '/usr/bin/clangd'
+let g:ycm_clangd_args = ['-j=10', '--background-index']
+let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '$HOME/.ycm_extra_conf.py'
+let g:ycm_enable_semantic_highlighting=1
 let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_of_chars_for_completion = 18
 let g:ycm_key_invoke_completion = '<c-x><c-o>'
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_complete_in_strings = 0
 let g:ycm_auto_trigger_delay = 4
-let g:ycm_auto_hover = ''
+"let g:ycm_show_diagnostics_ui = 0
 let g:ycm_semantic_triggers = {
-            \ 'c,cpp,python,go': ['re!\w{5}'],
+            \ 'c,cc,cpp,python,go,rust': ['re!\w{5}'],
             \ 'cs,lua,javascript': ['re!\w{5}'],
             \ }
 
+"let g:ycm_auto_hover = ''
+au FileType c,cc,cpp,python,rust,go    let b:ycm_hover = {
+            \ 'command': 'GetDoc',
+            \ 'syntax': &filetype,
+            \ }
+
 " some develop options.
-au FileType cpp set shiftwidth=2
-au FileType c,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
-au FileType c,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType cc,cpp set shiftwidth=4
+au FileType c,cc,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>
+au FileType c,cc,cpp,rust,go nnoremap gu  :YcmCompleter GoToCallers<CR>
+au FileType c,cc,cpp         nnoremap ga  :YcmCompleter GoToAlternateFile<CR>
 
 au BufEnter,BufNew *.conf call Tab8()
 au BufEnter,BufNew *.proto call Tab8()
@@ -40,3 +48,8 @@ au BufEnter,BufNew *.y call Tab8()
 " for rust and racer.
 au BufEnter,BufNew *.rs set ft=rust
 au BufEnter,BufNew *.lalrpop set ft=rust
+
+" for map leader.
+let mapleader=","
+nnoremap <leader>f :CtrlSF<CR><C-w><C-w>
+nnoremap<leader>d <plug>(YCMHover)

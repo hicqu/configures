@@ -15,6 +15,6 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' }
 Plug 'cstrahan/vim-capnp'
 
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'rust', 'python', 'go'] }
+Plug 'ycm-core/YouCompleteMe', { 'for': ['c', 'cc', 'cpp', 'rust', 'python', 'go'] }
 
 call plug#end()

@@ -23,16 +23,18 @@ filetype plugin indent on		" 自动检测文件类型
 
 set foldmethod=syntax           " 语法折叠
 au FileType python setl foldmethod=indent
-set foldnestmax=3				" fold level 2 max
+set foldnestmax=10				" fold level max
 
 set tabstop=4					" 制表符相关
 set softtabstop=4
 set shiftwidth=4
 set expandtab					" 用空格代替制表符
 
-" set nowrap					" 不自动折行
+set nowrap					    " 不自动折行
 set splitright
 set splitbelow
+
+set nofixeol                    " don't fix eol
 
 set laststatus=2				" more effective state bar
 set statusline+=%t				" tail of the filename
@@ -65,3 +67,5 @@ function Tab8()
     set noexpandtab
     set tabstop=8
 endfunction
+
+map <C-l> :e!<CR>
