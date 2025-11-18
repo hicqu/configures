@@ -34,7 +34,7 @@ au FileType c,cc,cpp,pythonrust,go    let b:ycm_hover = {
             \ }
 
 " some develop options.
-au FileType cpp set shiftwidth=4
+au FileType cc,cpp set shiftwidth=4
 au FileType c,cc,cpp,rust,go nnoremap gd  :YcmCompleter GoToDefinition<CR>
 au FileType c,cc,cpp,rust,go nnoremap gs  :sp<CR> :YcmCompleter GoToDefinition<CR>
 au FileType c,cc,cpp,rust,go nnoremap gx  :vs<CR> :YcmCompleter GoToDefinition<CR>

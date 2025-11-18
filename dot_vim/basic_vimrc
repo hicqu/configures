@@ -30,9 +30,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab					" 用空格代替制表符
 
-" set nowrap					" 不自动折行
+set nowrap					    " 不自动折行
 set splitright
 set splitbelow
+
+set nofixeol                    " don't fix eol
 
 set laststatus=2				" more effective state bar
 set statusline+=%t				" tail of the filename
